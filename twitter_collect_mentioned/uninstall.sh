@@ -1,0 +1,13 @@
+docker network disconnect twitter_net twitter_collect_mentioned_bni
+docker network disconnect twitter_net twitter_collect_mentioned_mandiri
+docker network disconnect twitter_net twitter_collect_mentioned_bri
+docker network disconnect twitter_net twitter_collect_mentioned_bca
+
+docker container stop twitter_collect_mentioned_bni twitter_collect_mentioned_mandiri twitter_collect_mentioned_bri twitter_collect_mentioned_bca
+
+docker container rm twitter_collect_mentioned_bni
+docker container rm twitter_collect_mentioned_mandiri
+docker container rm twitter_collect_mentioned_bri
+docker container rm twitter_collect_mentioned_bca
+
+docker image rm twitter_collect_mentioned:1.0

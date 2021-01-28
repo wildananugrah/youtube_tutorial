@@ -1,0 +1,1 @@
+INSERT INTO users(id, screen_name, origin, destination, created_at, updated_at) VALUES(uuid_generate_v4(), 'wildananugrah03', 'Jakarta', 'Bandung', current_timestamp, current_timestamp)

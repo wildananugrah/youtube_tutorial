@@ -1,0 +1,15 @@
+### generate
+POST http://localhost:7010/generate
+Content-Type: application/json
+
+{
+    "id":"e9698b37-601f-4d07-af1e-71b53476523f"
+}
+
+### validate
+POST http://localhost:7010/validate
+Content-Type: application/json
+
+{
+    "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImU5Njk4YjM3LTYwMWYtNGQwNy1hZjFlLTcxYjUzNDc2NTIzZiIsImV4cCI6MTYxMDM2Mjk5OH0.RHm3jsAw7fNM32VII4AHlrSHCitwjB6J5fri7-TXPBM"
+}
