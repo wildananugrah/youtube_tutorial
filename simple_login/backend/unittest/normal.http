@@ -1,14 +1,14 @@
 ### login
-POST http://localhost:3000/users/login HTTP/1.1
+POST http://localhost:3001/users/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "wildan",
+    "username": "wildan12",
     "password": "wildan12"
 }
 
 ### register
-POST http://localhost:3000/users/register HTTP/1.1
+POST http://localhost:3001/users/register HTTP/1.1
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### generate token
-POST http://localhost:3000/auth/generate HTTP/1.1
+POST http://localhost:3001/auth/generate HTTP/1.1
 Content-Type: application/json
 
 {
@@ -26,9 +26,9 @@ Content-Type: application/json
 }
 
 ### verify token
-POST http://localhost:3000/auth/verify HTTP/1.1
+POST http://localhost:3001/auth/verify HTTP/1.1
 Content-Type: application/json
 
 {
-    "token": "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5U1dRaU9pSmpZVEl6T0dOaU5DMWlZVGc1TFRRMFkyTXRZalUyTVMxaE1EQTJNMkpoTVRrelpUTWlMQ0pwWVhRaU9qRTJNVEk0TWpRek1EZ3NJbVY0Y0NJNk1UWTBORE0yTURNd09IMC5QSTFTTDg0cVZXdjUyeWFiZVhpYXEzTTBmXzBpQzZmWDNlcWFnS3BfSWQ4"
+    "token": "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5U1dRaU9pSmpZVEl6T0dOaU5DMWlZVGc1TFRRMFkyTXRZalUyTVMxaE1EQTJNMkpoTVRrelpUTWlMQ0pwWVhRaU9qRTJNVEk0TWpVd09EVXNJbVY0Y0NJNk1UWTBORE0yTVRBNE5YMC5MYXlRR2dwc2JhbDJTcmlwU1V5TTE4ZllrcmM0d0p5Rjc5ZDctYk9LTFQ0"
 }
