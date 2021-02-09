@@ -1,0 +1,4 @@
+# create private key and certificate
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout clientPrivateKey.key -out clientCertificate.crt
+# certificate to public key
+openssl x509 -pubkey -noout -in clientCertificate.crt  > clientPublicKey.pem
