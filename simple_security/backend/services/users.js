@@ -193,18 +193,22 @@ module.exports = (client, dbname) => {
             collection.findOne(data, function (err, result) {
                 if (err) {
                     console.log(err)
-                    res.json({ 'message': 'DATABASE ERROR!' })
+                    res.json({ 'message': 'DATABASE ERROR!' });
+                    client.close();
                 }
 
                 if (result) {
                     axios.post("/auth/generate", { "userId" : result.userId, "roleAccess": result.roleAccess }).then((response) => {
                         res.status(200).json({ "token" : response.data.token });
+                        client.close();
                     }).catch((error) => {
                         console.log(error.response.data);
+                        client.close();
                     })
                 }
                 else {
                     res.status(404).json({ 'code': 404, 'data': 'invalid username/password' });
+                    client.close();
                 }
             })
         } catch (err) {

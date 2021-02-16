@@ -66,23 +66,31 @@ module.exports = (client) => {
                         userId: result.userId
                     })
                     .then(function (response) {
-                        res.status(200).json({ 'token': response.data.token })
+                        res.status(200).json({ 'token': response.data.token });
+                        console.log(`4 ${client}`);
+                        client.close();
                     })
                     .catch(function (error) {
                         console.log(error)
                         res.json({
                             'message': "GENEREATE TOKEN ERROR!"
-                        })
+                        });
+                        console.log(`3 ${client}`);
+                        client.close();
                     });
 
                 }
                 else {
-                    res.status(404).json({ 'code': 404, 'data': 'invalid username/password' })
+                    res.status(404).json({ 'code': 404, 'data': 'invalid username/password' });
+                    console.log(`2 ${client}`);
+                    client.close();
                 }
             })
         } catch (err) {
-            console.log(err)
-            res.status(500).json({ 'message': 'GENERAL ERROR!' })
+            console.log(err);
+            res.status(500).json({ 'message': 'GENERAL ERROR!' });
+            console.log(`1 ${client}`);
+            client.close();
         }
     })
 
