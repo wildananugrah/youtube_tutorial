@@ -1,0 +1,10 @@
+sudo kill -9 $(sudo lsof -t -i:3000)
+
+# create private key and certificate
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout private.key -out certificate.crt
+# certificate to public key
+openssl x509 -pubkey -noout -in certificate.crt  > public.pem
+
+docker login --username wildananugrah
+docker tag name_image:1.0 wildananugrah/nama_image
+docker push wildananugrah/nama_image

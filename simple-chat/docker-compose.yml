@@ -1,0 +1,41 @@
+version: "3.7"
+services: 
+  mongoserver:
+    container_name: mongoserver
+    image: mongo:latest
+    networks: 
+      - simplechatnetwork
+    volumes: 
+      - /mongo:/etc/mongo
+  app-server-chat:
+    container_name: app-server-chat
+    image: wildananugrah/app-server-chat
+    ports:
+      - "3001:3001"
+    depends_on: 
+      - mongoserver
+    environment: 
+       - DBHOST=mongoserver
+    networks: 
+      - simplechatnetwork
+  socket-server-chat:
+    container_name: socket-server-chat
+    image: wildananugrah/socket-server-chat
+    ports:
+      - "3002:3002"
+    depends_on: 
+      - mongoserver
+    networks: 
+      - simplechatnetwork
+  client-chat:
+    container_name: client-chat
+    image: wildananugrah/client-chat
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - mongoserver
+    networks: 
+      - simplechatnetwork
+networks:
+  simplechatnetwork:
+    name: simplechatnetwork
