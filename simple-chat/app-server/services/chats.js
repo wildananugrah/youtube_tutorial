@@ -44,7 +44,7 @@ module.exports = (database) => {
             if (!auth.validate(req.get('authorization'))) {
                 res.status(401).json({ 'message': `invalid token` })
             } else {
-                collection.find({ "roomId": req.params.roomId }).toArray((err, dbresult) => {
+                collection.find({ "roomId": req.params.roomId }).sort({ "sentAt": -1 }).toArray((err, dbresult) => {
                     if (err) throw err
 
                     let data = []
