@@ -37,9 +37,13 @@ module.exports = () => {
                 'password': password
             }
 
+            console.log(`request: ${JSON.stringify(data)}`)
+
             axios.post('/users/register', data, { httpsAgent: agent }).then((response) => {
+                console.log('response: data has been inserted.')
                 res.status(200).json({ 'message': 'success' })
             }).catch((error) => {
+                console.log('response: error!.')
                 res.status(error.response.status).json({ 'message': 'invalid username or password!' })
             })
 

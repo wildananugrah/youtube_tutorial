@@ -15,7 +15,7 @@ module.exports = () => {
             axios.get('/rooms', { httpsAgent: agent, headers: {"Authorization": `Token ${req.session.token}`}}).then((response) => {
                 res.status(200).json(response.data)
             }).catch((error) => {
-                res.status(error.response.status).json({ 'message': 'can not get!' })
+                res.status(500).json({ 'message': 'can not get!' })
             })
 
         } catch (err) {
@@ -42,11 +42,14 @@ module.exports = () => {
     router.delete('/', (req, res) => {
         try {
             let data = { "roomId": req.body.roomId }
+            console.log('request: ' + JSON.stringify(data))
+            console.log('token: ' + req.session.token)
 
-            axios.delete('/rooms', { data: data }, { httpsAgent: agent, headers: { authorization: `Token ${req.session.token}` } }).then((response) => {
+            axios.delete('/rooms/' + req.body.roomId, { httpsAgent: agent, headers: { authorization: `Token ${req.session.token}` } }).then((response) => {
                 res.status(200).json(response.data)
             }).catch((error) => {
-                res.status(error.response.status).json({ 'message': 'can not delete!' })
+                console.log(error)
+                res.status(500).json({ 'message': 'can not delete!' })
             })
 
         } catch (err) {
@@ -62,7 +65,7 @@ module.exports = () => {
             axios.post('/rooms', data, { httpsAgent: agent, headers: { authorization: `Token ${req.session.token}` } }).then((response) => {
                 res.status(200).json(response.data)
             }).catch((error) => {
-                res.status(error.response.status).json({ 'message': 'can not add!' })
+                res.status(500).json({ 'message': 'can not add!' })
             })
 
         } catch (err) {

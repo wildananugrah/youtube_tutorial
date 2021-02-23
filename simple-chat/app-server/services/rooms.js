@@ -70,13 +70,18 @@ module.exports = (database) => {
         }
     })
 
-    router.delete('/', (req, res) => {
+    router.delete('/:roomId', (req, res) => {
         try {
+            console.log("delete.")
+            console.log('auth: ' + req.get('authorization'))
             if (!auth.validate(req.get('authorization'))) {
+                console.log('invalid token.')
                 res.status(401).json({ 'message': `invalid token` })
             } else {
-                collection.deleteOne({ 'roomId': req.body.roomId }, (err, dbresult) => {
-                    if (err) throw err
+                let data = { 'roomId': req.params.roomId }
+                console.log('request: ' + data)
+                collection.deleteOne(data, (err, dbresult) => {
+                    if (err) res.status(500).json({ 'message': 'DATABASE ERROR!' })
 
                     res.status(200).json({ 'message': '1 document deleted!' })
 

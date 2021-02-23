@@ -18,6 +18,7 @@ function handleLoginSubmit(e){
         },
         error: function(xhr,status,error){
             console.log(`status: ${xhr.status}, error: ${error}`)
+            alert(xhr.responseJSON.message)
         }
     })
 }

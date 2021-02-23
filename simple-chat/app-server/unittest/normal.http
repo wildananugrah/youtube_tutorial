@@ -1,19 +1,19 @@
 ### login
-POST http://localhost:3001/api/v1/users/login HTTP/1.1
+POST https://localhost:3001/api/v1/users/login HTTP/1.1
 Content-Type: application/json
 
 {
     "email": "wildananugrah@gmail.com",
-    "password": "password!"
+    "password": "password"
 }
 
 ### register
-POST http://localhost:3001/api/v1/users/register HTTP/1.1
+POST https://localhost:3001/api/v1/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "wildananugrah@gmail.com",
-    "password": "password!"
+    "email": "user2@gmail.com",
+    "password": "password"
 }
 
 ### add room
@@ -29,10 +29,9 @@ GET http://localhost:3001/api/v1/rooms HTTP/1.1
 Content-Type: application/json
 
 ### delete room
-DELETE http://localhost:3001/api/v1/rooms HTTP/1.1
+DELETE https://localhost:3001/api/v1/rooms/78d57a3c-6a7d-4ef5-b734-1805005560d2 HTTP/1.1
 Content-Type: application/json
-
-{ "roomId": "eb4364bf-f58d-4629-b89a-3b1fa5a59a6d" }
+Authorization: 'Token ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5U1dRaU9pSm1ZbVpoWmpFNU5DMDFPR1UzTFRRM016UXRZalk1WlMwMU1UaGtZek14TTJKallUa2lMQ0pwWVhRaU9qRTJNVFF3TmpJeE5qQXNJbVY0Y0NJNk1UWTBOVFU1T0RFMk1IMC55OU92QkFLdFpyZk8yVFUtUlhyTWh6NEtBNVhVdTF6WTE2dEN1VmZzWHZF'
 
 ###
 POST http://localhost:3001/api/v1/chats HTTP/1.1

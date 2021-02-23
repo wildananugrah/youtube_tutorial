@@ -13,11 +13,13 @@ function handleRegisterSubmit(e){
         type: 'POST',
         contentType: 'application/json',
         success: function(response, textStatus, xhr){
+            console.log(response)
             alert(response.message)
         },
         error: function(xhr,status,error){
             console.log(`status: ${xhr.status}, error: ${error}`)
-            alert(error.message)
+            console.log(xhr.responseJSON.message)
+            alert(xhr.responseJSON.message)
         }
     })
 }

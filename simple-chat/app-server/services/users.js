@@ -47,6 +47,8 @@ module.exports = (database) => {
                 'password': password
             }
 
+            console.log(`request: ${JSON.stringify(data)}`)
+
             collection.find({ 'email': email }).toArray((err, dbresult) => {
                 if (err) {
                     console.log(err)
@@ -56,11 +58,15 @@ module.exports = (database) => {
                 if (dbresult.length == 0) {
                     collection.insertOne(data, (err, dbresult) => {
                         if (err) throw err
-                        res.status(200).json({ 'message': `${dbresult.insertedCount} data has been inserted successfully` })
+                        let message = `${dbresult.insertedCount} data has been inserted successfully`
+                        console.log(`response: ${message}`)
+                        res.status(200).json({ 'message': message })
                     })
                 }
                 else {
-                    res.status(400).json({ 'message': `email: ${email} exists!` })
+                    let message = `email: ${email} exists!`
+                    console.log(`response: ${message}`)
+                    res.status(400).json({ 'message': message })
                 }
             })
 

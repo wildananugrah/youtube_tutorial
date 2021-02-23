@@ -8,3 +8,5 @@ openssl x509 -pubkey -noout -in certificate.crt  > public.pem
 docker login --username wildananugrah
 docker tag name_image:1.0 wildananugrah/nama_image
 docker push wildananugrah/nama_image
+
+docker run --name mongoserver -v mongo-volume:/data/db -p 27017:27017 -d mongo:latest
