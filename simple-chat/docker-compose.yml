@@ -6,7 +6,7 @@ services:
     networks: 
       - simplechatnetwork
     volumes: 
-      - /mongo:/etc/mongo
+      - ./mongo-volume:/data/db
   app-server-chat:
     container_name: app-server-chat
     image: wildananugrah/app-server-chat
