@@ -3,7 +3,10 @@ import urllib
 from utils import *
 import json
 
-user_targets = ['detikcom', 'liputan6dotcom','kompascom','Beritasatu','merdekadotcom','tempodotco','KapanLagicom','tribunnews','VIVAcoid']
+user_targets = []
+with open('twitter_accounts', "r") as fin:
+    for i, line in enumerate(fin):
+        user_targets.append(line.strip())
 
 key = get_keys()
 twitter = OAuth1Session(key['consumer_key'], client_secret=key['consumer_secret'], resource_owner_key=key['access_token'], resource_owner_secret=key['access_token_secret'])
