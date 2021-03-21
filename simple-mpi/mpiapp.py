@@ -51,7 +51,8 @@ if rank == 0:
                     contents = []
             except Exception as err:
                 print(f"ERROR: {err} -> Line {i}")
-        comm.send({'message' : 'no data'}, dest=(count%workers + 1), tag=NO_DATA_TAG)
+        for i range(workers):
+            comm.send({'message' : 'no data'}, dest=(i + 1), tag=NO_DATA_TAG)
     
     workers_results = []
     for i in range(workers):
