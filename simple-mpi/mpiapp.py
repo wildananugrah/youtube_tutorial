@@ -75,6 +75,7 @@ else:
     start = datetime.now()
     print(f"rank: {rank} started at {start}")
     contents = []
+    count_lines = 1
     while True:
         s = MPI.Status()
         comm.Probe(status=s)
@@ -83,6 +84,7 @@ else:
             lines = data['data']
             for line in lines:
                 try:
+                    count_lines += 1
                     content_json = json.loads(line)
                     contents.append(content_json)
                 except Exception as err:
@@ -93,4 +95,4 @@ else:
             comm.send(words, dest=0, tag=DATA_TAG)
             break
     end = datetime.now()
-    print(f"rank: {rank} ended at {end}, processing time: {end - start}")
+    print(f"rank: {rank} ended at {end}, processing {count_lines} lines in {end - start} ms")
