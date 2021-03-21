@@ -7,7 +7,6 @@ import operator
 
 # initialized
 
-start = datetime.now()
 words = defaultdict(int)
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
